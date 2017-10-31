@@ -1,0 +1,22 @@
+.burger-input-container {
+	margin: 20px;
+}
+.eat-burger {
+	margin-right: 10px;
+}
+.submit-burger {
+	margin: 0 auto;
+}
+
+.container {
+	margin: 15px;
+}
+.Site {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.Site-content {
+	flex: 1;
+}

@@ -1,0 +1,94 @@
+{{!-- Title Div --}}
+
+<section class="hero is-warning">
+ 	<div class="hero-body">
+    	<div class="container">
+      		<h1 class="title">
+        		Burger-Eater
+      		</h1>
+      		<h2 class="subtitle">
+        		Keep a list of burgers you want to eat and then update it later. Don't worry, we'll be right here.
+      		</h2>
+    	</div>
+  	</div>
+
+	{{!-- Burger Input --}}
+  	<div class="container has-text-centered burger-input-container">
+		<div class="columns">
+			<div class="column">
+				<div class="control">
+		    		<input class="input new-burger" type="text" placeholder="Name a Burger">
+		  		</div>
+			  <div class="control">
+			    <button class="button is-primary is-link submit-burger">Submit</button>
+			  </div>
+			</div>
+			
+		</div>
+	</div>
+</section>
+
+<main class="Site-content">
+
+	{{!-- Display Burger Columns --}}
+	<div class="container is-fluid">
+		
+		<div class="columns">
+
+			<div class="column">
+					
+				<nav class="panel">
+				    <p class="panel-heading">
+				    	burger wishlist
+				    </p>
+		  
+		    		<div class="burgers-container">
+					    {{#each burgers}}
+						    {{#unless this.devoured}}
+						  		<a class="panel-block ">
+							   		<button class="button eat-burger" data-id={{this.id}} href="/api/burgers/update/{{this.id}}">Eat!</button>
+							  	    <p>{{this.burger_name}}</p>
+						  		</a>	  
+							{{/unless}}
+						{{/each}}
+		    		</div>
+	  
+				</nav>
+		  	</div>
+
+		  	<div class="column">
+		 		<nav class="panel">
+				    <p class="panel-heading">
+				    	burgers eaten
+				    </p>
+
+					<div class="burgers-eaten-container">
+					    {{#each burgers}}
+						    {{#if this.devoured}}
+						  		<a class="panel-block ">
+							  	    <p>{{this.burger_name}}	</p>
+						  		</a>	  
+							{{/if}}
+						{{/each}}
+		    		</div>
+				</nav>
+		  	</div>
+
+		</div>
+	</div>
+	
+	<div class="container is-center">
+		<img src="./images/loading-burger.gif">  
+	</div>
+</main>
+
+{{!-- F00ter --}}
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        &copy; Andrew Huang 2017
+      </p>
+    </div>
+  </div>
+</footer>
