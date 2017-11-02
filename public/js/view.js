@@ -48,12 +48,13 @@ $(document).ready(function() {
 		console.log("adding new rating");
 		event.preventDefault();
 		event.stopPropagation();
+		var id = $(this).data("id");
 		var newRating = {
-			rating: $("#rating-value").val(),
-			user_name: $("#username-input")
+			rating: $(`select[data-id=${id}]`).val(),
+			user_name: $(`input[data-id=${id}]`)
 				.val()
 				.trim(),
-			burgerId: $(this).data("id")
+			burgerId: id
 		};
 		console.log(JSON.stringify(newRating, null, 2));
 		$.post("/api/ratings", newRating).done(() => location.reload());
