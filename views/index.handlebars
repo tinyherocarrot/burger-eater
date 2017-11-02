@@ -2,6 +2,8 @@
 
 <section class="hero is-warning">
  	<div class="hero-body">
+		
+
     	<div class="container">
       		<h1 class="title">
         		Burger-Eater
@@ -10,22 +12,24 @@
         		Keep a list of burgers you want to eat and then update it later. Don't worry, we'll be right here.
       		</h2>
     	</div>
+		
+		{{!-- Burger Input --}}
+	  	<div class="container has-text-centered burger-input-container">
+			<div class="columns">
+				<div class="column">
+					<div class="control">
+			    		<input class="input new-burger" type="text" placeholder="Name a Burger">
+			  		</div>
+					<br>
+					<div class="control">
+				    	<button class="button is-primary is-link submit-burger">Submit</button>
+				  	</div>
+				</div>
+				
+			</div>
+		</div>
   	</div>
 
-	{{!-- Burger Input --}}
-  	<div class="container has-text-centered burger-input-container">
-		<div class="columns">
-			<div class="column">
-				<div class="control">
-		    		<input class="input new-burger" type="text" placeholder="Name a Burger">
-		  		</div>
-			  <div class="control">
-			    <button class="button is-primary is-link submit-burger">Submit</button>
-			  </div>
-			</div>
-			
-		</div>
-	</div>
 </section>
 
 <main class="Site-content">
@@ -65,30 +69,87 @@
 					<div class="burgers-eaten-container">
 					    {{#each burgers}}
 						    {{#if this.devoured}}
-						  		<a class="panel-block ">
-							  	    <p>{{this.burger_name}}	</p>
+						  		<a class="panel-block" data-id={{this.id}}>
+					  	  			
+						  	    	<p>{{this.burger_name}}	</p>	
+										
+									<form class="rating-form" data-id={{this.id}}>
+											
+										<div class="field">
+										  	<label class="label">Burger Rating</label>
+										  	<div class="control">
+										    	<div class="select">
+										      		<select id="rating-value">
+										        		<option>1</option>
+										        		<option>2</option>
+										        		<option>3</option>
+										        		<option>4</option>
+										        		<option>5</option>
+										        		<option>6</option>
+										        		<option>7</option>
+										        		<option>8</option>
+										        		<option>9</option>
+										        		<option>10</option>
+										      		</select>
+										    	</div>
+										  	</div>
+										</div>
+
+								  	    <div class="field">
+											<label class="label">Name</label>
+										  	<div class="control">
+										    	<input class="input" type="text" placeholder="Enter your name" id="username-input">
+										  	</div>
+										</div>
+
+										<div class="control">
+										  	<button class="button is-primary submit-rating" data-id={{this.id}}>Submit</button>
+										</div>
+									</form> 
+
 						  		</a>	  
 							{{/if}}
 						{{/each}}
 		    		</div>
 				</nav>
 		  	</div>
-
+			<div class="column">
+					
+				<nav class="panel">
+				    <p class="panel-heading">
+				    	burgers rated
+				    </p>
+		  
+		    		<div class="burgers-container">
+					    {{#each ratings}}
+						    {{#unless this.devoured}}
+						  		<a class="panel-block ">
+							   		<button class="button eat-burger" data-id={{this.id}} href="/api/burgers/update/{{this.id}}">Eat!</button>
+							  	    <p>{{this.burger_name}}</p>
+						  		</a>	  
+							{{/unless}}
+						{{/each}}
+		    		</div>
+	  
+				</nav>
+		  	</div>
 		</div>
 	</div>
 	
-	<div class="container is-center">
-		<img src="./images/loading-burger.gif">  
+	<div class="columns">
+		<div class="column">
+			<img class="is-centered" src="./images/loading-burger.gif">  	
+		</div>
 	</div>
 </main>
 
 {{!-- F00ter --}}
 <footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        &copy; Andrew Huang 2017
-      </p>
-    </div>
-  </div>
+  	<div class="container">
+    	<div class="content has-text-centered">
+      		<p>
+        		&copy; Andrew Huang 2017
+      		</p>
+    	</div>
+  	</div>
 </footer>

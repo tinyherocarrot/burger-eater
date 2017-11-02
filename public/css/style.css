@@ -7,10 +7,14 @@
 .submit-burger {
 	margin: 0 auto;
 }
-
+.rating-form {
+	/*display: none;*/
+}
 .container {
 	margin: 15px;
 }
+
+/*making sticky footer*/
 .Site {
 	display: flex;
 	min-height: 100vh;

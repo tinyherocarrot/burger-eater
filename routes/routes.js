@@ -52,4 +52,20 @@ module.exports = function(app) {
 				res.end();
 			});
 	});
+
+	// post route for adding a new rating
+	app.post("/api/ratings", function(req, res) {
+		console.log("Got: ", req.body, req.method, req.path);
+
+		db.ratings
+			.create({
+				user_name: req.body.user_name,
+				rating: req.body.rating,
+				burgerId: req.body.burgerId
+			})
+			.then(results => {
+				console.log("rating successfully added");
+				res.redirect("/");
+			});
+	});
 };
