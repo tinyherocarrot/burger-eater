@@ -10,9 +10,18 @@ module.exports = function(app) {
 
 	// root route
 	app.get("/", function(req, res) {
+		// db.burgers.findAll({}).then(results => {
+		// 	console.log(JSON.stringify(results, null, 2));
+		// 	res.render("index", results);
+		// });
 		db.burgers
-			.findAll({})
-			.then(results => res.render("index", { burgers: results }));
+			.findAll({
+				include: [db.ratings]
+			})
+			.then(results => {
+				console.log(JSON.stringify(results, null, 2));
+				res.render("index", { results: results });
+			});
 	});
 
 	// retrieve all burgers in DB and res.json back to user

@@ -47,7 +47,7 @@
 				    </p>
 		  
 		    		<div class="burgers-container">
-					    {{#each burgers}}
+					    {{#each results}}
 						    {{#unless this.devoured}}
 						  		<a class="panel-block ">
 							   		<button class="button eat-burger" data-id={{this.id}} href="/api/burgers/update/{{this.id}}">Eat!</button>
@@ -67,11 +67,11 @@
 				    </p>
 
 					<div class="burgers-eaten-container">
-					    {{#each burgers}}
+					    {{#each results}}
 						    {{#if this.devoured}}
 						  		<a class="panel-block" data-id={{this.id}}>
 					  	  			
-						  	    	<p>{{this.burger_name}}	</p>	
+						  	    	<p class="burger-title">{{this.burger_name}}	</p>	
 										
 									<form class="rating-form" data-id={{this.id}}>
 											
@@ -121,13 +121,19 @@
 				    </p>
 		  
 		    		<div class="burgers-container">
-					    {{#each ratings}}
-						    {{#unless this.devoured}}
-						  		<a class="panel-block ">
-							   		<button class="button eat-burger" data-id={{this.id}} href="/api/burgers/update/{{this.id}}">Eat!</button>
-							  	    <p>{{this.burger_name}}</p>
-						  		</a>	  
-							{{/unless}}
+					    {{#each results}}
+					    {{!-- if there are no ratings, length will be zero, and falsey --}}
+					    	{{#if this.ratings.length}}
+						  		<a class="panel-block">
+							  	    <p class="burger-title"><strong>{{this.burger_name}}</strong> </p> <br>
+							  		<ul>
+							  		{{#each this.ratings}}
+								  	    <li>Rated {{this.rating}}/10 by {{this.user_name}}</li>
+							  		{{/each}}
+							  			
+							  		</ul>
+								 </a>	  
+						  	{{/if}}
 						{{/each}}
 		    		</div>
 	  
@@ -136,7 +142,7 @@
 		</div>
 	</div>
 	
-	<div class="columns">
+	<div class="columns is-centered">
 		<div class="column">
 			<img class="is-centered" src="./images/loading-burger.gif">  	
 		</div>

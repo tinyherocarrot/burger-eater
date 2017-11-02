@@ -13,7 +13,12 @@
 .container {
 	margin: 15px;
 }
-
+.columns.is-centered {
+	justify-content: center;
+}
+.burger-title {
+	margin-right: 15px;
+}
 /*making sticky footer*/
 .Site {
 	display: flex;

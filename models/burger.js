@@ -15,5 +15,11 @@ module.exports = function(sequelize, DataTypes) {
 			timestamps: false
 		}
 	);
+
+	Burger.associate = function(db) {
+		Burger.hasMany(db.ratings, {
+			onDelete: "CASCADE"
+		});
+	};
 	return Burger;
 };

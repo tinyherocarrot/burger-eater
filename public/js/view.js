@@ -56,6 +56,6 @@ $(document).ready(function() {
 			burgerId: $(this).data("id")
 		};
 		console.log(JSON.stringify(newRating, null, 2));
-		$.post("/api/ratings", newRating).done();
+		$.post("/api/ratings", newRating).done(() => location.reload());
 	}
 });
