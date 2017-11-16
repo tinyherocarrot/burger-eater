@@ -10,3 +10,5 @@ This project was implemented using the Bulma framework in the front end, and MyS
 
 ## ToDos
 * fix alignment of burger gif
+
+![burger-gif](https://i.pinimg.com/originals/50/7e/92/507e92e1d92210aac1a7130c8757a0dd.gif)
